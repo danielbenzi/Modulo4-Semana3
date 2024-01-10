@@ -1,0 +1,23 @@
+# exercicio3.py
+
+def calcular_preco_volume(volume):
+    valor_volume = 0.0
+
+    if volume < 1000:
+        valor_volume = 10.0
+    elif volume >= 1000 and volume < 10000:
+        valor_volume = 20.0
+    elif volume >= 10000 and volume < 30000:
+        valor_volume = 30.0
+    elif volume >= 30000 and volume < 100000:
+        valor_volume = 20.0
+
+    return valor_volume
+
+# Testes para o Exercício 3
+
+def test_calculo_preco_volume_1():
+    assert calcular_preco_volume(5000) == 30.0
+
+def test_calculo_preco_volume_2():
+    assert calcular_preco_volume(200) == 10.0
