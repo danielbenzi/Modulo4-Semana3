@@ -1,0 +1,22 @@
+# exercicio2.py
+
+def calcular_total_pedido(pedido):
+    cardapio = {
+        100: 9.00,
+        101: 11.00,
+        102: 12.00,
+        103: 12.00,
+        104: 14.00,
+        105: 17.00,
+        200: 5.00,
+        201: 4.00
+    }
+
+    total = sum(cardapio[item] for item in pedido)
+    return total
+
+# Testes para o Exercício 2
+
+def test_calculo_total_pedido():
+    pedido = [100, 101, 200, 201]
+    assert calcular_total_pedido(pedido) == 29.0
