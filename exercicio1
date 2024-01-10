@@ -1,0 +1,25 @@
+# exercicio1.py
+
+def calcular_desconto(quantidade, valor_unitario):
+    desconto = 1
+
+    if quantidade >= 10 and quantidade <= 99:
+        desconto = 0.95
+    elif quantidade >= 100 and quantidade <= 999:
+        desconto = 0.90
+    elif quantidade >= 1000:
+        desconto = 0.85
+
+    valor_com_desconto = valor_unitario * desconto * quantidade
+    return valor_com_desconto
+
+# Testes para o Exercício 1
+
+def test_desconto_10_a_99():
+    assert calcular_desconto(10, 80.0) == 760.0
+
+def test_desconto_100_a_999():
+    assert calcular_desconto(100, 80.0) == 720.0
+
+def test_desconto_acima_de_1000():
+    assert calcular_desconto(1001, 80.0) == 680.0
