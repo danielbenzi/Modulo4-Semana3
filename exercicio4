@@ -1,0 +1,43 @@
+# exercicio4.py
+
+pecas = []
+
+def cadastrar_peca(nome, fabricante, valor):
+    codigo = gerar_codigo()
+    peca = {
+        'codigo': codigo,
+        'nome': nome,
+        'fabricante': fabricante,
+        'valor': valor
+    }
+    pecas.append(peca)
+
+def consultar_pecas(filtro=None):
+    if filtro:
+        return [peca for peca in pecas if filtro in peca['nome']]
+    return pecas
+
+def remover_peca(codigo):
+    for peca in pecas:
+        if peca['codigo'] == codigo:
+            pecas.remove(peca)
+            break
+
+def gerar_codigo():
+    tamanho_lista = len(pecas)
+    if tamanho_lista > 0:
+        ultima_peca = pecas[tamanho_lista - 1]
+        ultimo_codigo = ultima_peca['codigo']
+        return ultimo_codigo + 1
+    return 1
+
+# Testes para o Exercício 4
+
+def test_cadastrar_peca():
+    cadastrar_peca('Parafuso', 'Fornecedor A', 5.0)
+    assert len(consultar_pecas('Parafuso')) == 1
+
+def test_remover_peca():
+    codigo_para_remover = consultar_pecas('Parafuso')[0]['codigo']
+    remover_peca(codigo_para_remover)
+    assert len(consultar_pecas('Parafuso')) == 0
